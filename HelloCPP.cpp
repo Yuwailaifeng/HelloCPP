@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 	//cout << sizeof(str1) << endl;
 	//cout << sizeof(str2) << endl;
 
-	cout << PI << NEWLINE;
+	cout << setprecision(20) << PI << NEWLINE;
 	cout << Count << NEWLINE;
 
 	//enum days { one, two, three }day;
@@ -110,6 +110,175 @@ int main(int argc, char* argv[])
 	}
 
 
+	//C++ 不允许向函数传递一个完整的数组作为参数，但是，您可以通过指定不带索引的数组名来传递一个指向数组的指针
+	double Day[] = { 1,2,3,4 };
+	double *day = Day;//数组名是一个指向数组中第一个元素的常量指针
+	cout << setfill('*') << setw(7) << Day[0] << setw(7) << Day[1] << NEWLINE;
+	cout << setfill('*') << setw(7) << *(Day) << setw(7) << *(Day + 1) << NEWLINE;
+	cout << setfill('*') << setw(7) << *(day) << setw(7) << *(day+1) << NEWLINE;
+
+
+
+
+	vector<int> vec;
+	cout << vec.size() << NEWLINE;
+	for (i = 0; i < 5; i++)
+	{
+		vec.push_back(i);
+	}
+	cout << vec.size() << NEWLINE;
+
+
+	// 一个带有 5 行 2 列的数组
+	int arr[5][2] = { { 0,0 },{ 1,2 },{ 2,4 },{ 3,6 },{ 4,8 } };                    
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 2; j++)
+		{
+			cout << "arr[" << i << "][" << j << "]: ";
+			cout << arr[i][j] << endl;
+		}
+
+
+	//C++ 不允许返回一个完整的数组作为函数的参数。但是，您可以通过指定不带索引的数组名来返回一个指向数组的指针
+	int *p = getRandom();
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "*(p + " << i << ") : ";
+		cout << *(p + i) << endl;
+	}
+
+
+
+	//字符串实际上是使用 null 字符 '\0' 终止的一维字符数组
+	char s1[6] = { 'H', 'e', 'l', 'l', 'o', '\0' };
+	char s2[] = "Hello";
+	char s3[] = "ell";
+	cout << s1 << endl;
+	cout << s2 << endl;
+	cout << strlen(s1) << NEWLINE;//返回字符串 s1 的长度
+	cout << strcmp(s1, s2) << NEWLINE;//如果 s1 和 s2 是相同的，则返回 0
+	cout << *(strstr(s1, s3)) << NEWLINE;//返回一个指针，指向字符串 s1 中字符串 s3 的第一次出现的位置
+
+
+
+	string str1 = "Hello";
+	string str2 = "World";
+	string str3;
+	int  len;
+	// 复制 str1 到 str3
+	str3 = str1;
+	cout << "str3 : " << str3 << endl;
+	// 连接 str1 和 str2
+	str3 = str1 + str2;
+	cout << "str1 + str2 : " << str3 << endl;
+	// 连接后，str3 的总长度
+	len = str3.size();
+	cout << "str3.size() :  " << len << endl;
+
+
+	double  *ptr = NULL;//空指针
+	cout << "ptr 的值是 " << ptr << NEWLINE;
+
+	//指针和数组并不是完全互换的,一个指向数组开头的常量，不能作为左值
+	double  var[5] = { 10, 100, 200 };
+	// 指针中的数组地址
+	ptr = var;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Address of var[" << i << "] = ";
+		cout << ptr << endl;
+		cout << "Value of var[" << i << "] = ";
+		cout << *ptr << endl;
+		ptr++;//double 8 个字节
+	}
+
+	// 指针中最后一个元素的地址
+	ptr = &var[5 - 1];
+	for (int i = 5; i > 0; i--)
+	{
+		cout << "Address of var[" << i << "] = ";
+		cout << ptr << endl;
+		cout << "Value of var[" << i << "] = ";
+		cout << *ptr << endl;
+		ptr--;//double 8 个字节
+	}
+	cout << NEWLINE;
+
+
+
+
+	//引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。
+	//一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量
+	//引用很容易与指针混淆，它们之间有三个主要的不同：
+	//不存在空引用。引用必须连接到一块合法的内存
+	//一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象
+	//引用必须在创建时被初始化。指针可以在任何时间被初始化
+	//int& r = i; 和 int r = i; 不同之处应该是内存的分配吧，后者会再开辟一个内存空间
+	int& r = i;
+	i = 5;
+	cout << "Value of i : " << i << endl;
+	cout << "Value of i reference : " << r << endl;
+	cout << "Addr of i: " << &i << endl;
+	cout << "Addr of r: " << &r << endl;
+	cout << NEWLINE;
+	y = x;
+	x = 6;
+	cout << "Value of x : " << x << endl;
+	cout << "Value of y : " << y << endl;
+	cout << "Addr of x: " << &x << endl;
+	cout << "Addr of y: " << &y << endl;
+	cout << NEWLINE;
+
+
+
+
+	// 基于当前系统的当前日期/时间
+	time_t now = time(0);
+	// 把 now 转换为字符串形式
+	char* dt = ctime(&now);
+	cout << "本地日期和时间：" << dt << endl;
+	// 把 now 转换为 tm 结构
+	tm *gmtm = gmtime(&now);
+	dt = asctime(gmtm);
+	cout << "UTC 日期和时间：" << dt << endl;
+
+
+	Books Book1;        // 定义结构体类型 Books 的变量 Book1
+
+	strcpy(Book1.title, "C++ 教程");
+	strcpy(Book1.author, "Runoob");
+	strcpy(Book1.subject, "编程语言");
+	Book1.book_id = 12345;
+
+	cout << "第一本书标题 : " << Book1.title << endl;
+	cout << "第一本书作者 : " << Book1.author << endl;
+	cout << "第一本书类目 : " << Book1.subject << endl;
+	cout << "第一本书 ID : " << Book1.book_id << endl;
+
+	printBook1(Book1);
+	printBook2(&Book1);
+
+
+	Box box1;
+	box1.setLength(12.1);
+	box1.setBreadth(13.1);
+	box1.setHeight(14.1);
+	box1.printBox();
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -127,6 +296,36 @@ void swap(int *x, int *y)
 	temp = *x;	/* 保存地址 x 的值 */
 	*x = *y;		/* 把 y 赋值给 x */
 	*y = temp;	/* 把 x 赋值给 y */
+}
 
-	return;
+int * getRandom()
+{
+	static int  r[10];
+	// 设置种子
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < 10; ++i)
+	{
+		r[i] = rand();
+		cout << r[i] << endl;
+	}
+	return r;
+}
+
+
+
+void printBook1(Books book)
+{
+	cout << "书标题 : " << book.title << endl;
+	cout << "书作者 : " << book.author << endl;
+	cout << "书类目 : " << book.subject << endl;
+	cout << "书 ID : " << book.book_id << endl;
+}
+
+// 该函数以结构指针作为参数
+void printBook2(Books *book)
+{
+	cout << "书标题  : " << book->title << endl;
+	cout << "书作者 : " << book->author << endl;
+	cout << "书类目 : " << book->subject << endl;
+	cout << "书 ID : " << book->book_id << endl;
 }
