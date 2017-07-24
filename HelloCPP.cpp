@@ -25,6 +25,8 @@ int main(int argc, char* argv[])
 	//cout << sizeof(str1) << endl;
 	//cout << sizeof(str2) << endl;
 
+	cout << PI << NEWLINE;
+	cout << Count << NEWLINE;
 
 	//enum days { one, two, three }day;
 	//day = one;
