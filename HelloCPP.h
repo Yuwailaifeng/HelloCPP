@@ -1,5 +1,13 @@
 /*”ÚÕ‚¿¥∑Á*/
 #include<iostream>
+#include<cmath>
+#include <ctime>
+#include <cstdlib>
+
+
+
+
+
 using namespace std;
 
 #define NEWLINE '\n'

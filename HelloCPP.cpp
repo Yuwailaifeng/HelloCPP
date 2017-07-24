@@ -94,10 +94,20 @@ int main(int argc, char* argv[])
 
 
 
+	cout << "sin(PI) :" << sin(PI) << endl;
+	cout << "sqrt(Count) :" << sqrt(Count) << endl;
+	cout << "pow( PI, 2) :" << pow(PI, 2) << endl;
 
 
 
-
+	srand((unsigned)time(NULL));
+	/* 生成 10 个随机数 */
+	for (i = 0; i < 10; i++)
+	{
+		// 生成实际的随机数
+		int j = rand()%10;
+		cout << "随机数： " << j << endl;
+	}
 
 
 
