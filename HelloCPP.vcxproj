@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="HelloCPP.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HelloCPP.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B22F319A-A180-4615-86F2-522DDAD34C20}</ProjectGuid>
