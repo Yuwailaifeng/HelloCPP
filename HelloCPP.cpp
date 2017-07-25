@@ -244,32 +244,60 @@ int main(int argc, char* argv[])
 
 
 	Books Book1;        // 定义结构体类型 Books 的变量 Book1
-
 	strcpy(Book1.title, "C++ 教程");
 	strcpy(Book1.author, "Runoob");
 	strcpy(Book1.subject, "编程语言");
 	Book1.book_id = 12345;
-
 	cout << "第一本书标题 : " << Book1.title << endl;
 	cout << "第一本书作者 : " << Book1.author << endl;
 	cout << "第一本书类目 : " << Book1.subject << endl;
 	cout << "第一本书 ID : " << Book1.book_id << endl;
-
 	printBook1(Book1);
 	printBook2(&Book1);
 
 
+
+
 	Box box1;
-	box1.setLength(12.1);
+	box1.setLength(12.1);//public所以可以访问
 	box1.setBreadth(13.1);
 	box1.setHeight(14.1);
+	box1.setName("box1");
+	printLength(box1);
 	box1.printBox();
 
-
+	SmallBox box2;
+	box2.setLength(12.1);//public继承所以可以访问
+	box2.setBreadth(13.1);
+	box2.setHeight(14.1);
+	box2.setName("box2");
+	cout << box2.getSmallName() << NEWLINE;
+	printLength(box2);
+	box2.printBox();
+	
+	Box box3(12.1,13.1,14.1,"box3");
+	printLength(box3);
+	box3.printBox();
 	
 
+	Box *box4 = &box3;
+	cout << box4 << endl;
+	box4->printBox();
+
+	Box box5 = box1 + *box4;
+	box5.printBox();
+	
+	// 静态函数输出对象的总数
+	cout << "Final Box Count: " << Box::getCount() << endl <<endl;
 
 
+
+
+
+
+	cout << "Max (20,10): " << Max(20, 10) << endl;
+	cout << "Max (0,200): " << Max(0, 200) << endl;
+	cout << "Max (100,1010): " << Max(100, 1010) << endl;
 
 
 
