@@ -457,40 +457,40 @@ int main(int argc, char* argv[])
 // 函数定义
 void swap(int *x, int *y)
 {
-	int temp;
-	temp = *x;	/* 保存地址 x 的值 */
-	*x = *y;		/* 把 y 赋值给 x */
-	*y = temp;	/* 把 x 赋值给 y */
+    int temp;
+    temp = *x;	/* 保存地址 x 的值 */
+    *x = *y;		/* 把 y 赋值给 x */
+    *y = temp;	/* 把 x 赋值给 y */
 }
 
 int * getRandom()
 {
-	static int  r[10];
-	// 设置种子
-	srand((unsigned)time(NULL));
-	for (int i = 0; i < 10; ++i)
-	{
-		r[i] = rand();
-		cout << r[i] << endl;
-	}
-	return r;
+    static int  r[10];
+    // 设置种子
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < 10; ++i)
+    {
+    	r[i] = rand();
+    	cout << r[i] << endl;
+    }
+    return r;
 }
 
 
 
 void printBook1(Books book)
 {
-	cout << "书标题 : " << book.title << endl;
-	cout << "书作者 : " << book.author << endl;
-	cout << "书类目 : " << book.subject << endl;
-	cout << "书 ID : " << book.book_id << endl;
+    cout << "书标题 : " << book.title << endl;
+    cout << "书作者 : " << book.author << endl;
+    cout << "书类目 : " << book.subject << endl;
+    cout << "书 ID : " << book.book_id << endl;
 }
 
 // 该函数以结构指针作为参数
 void printBook2(Books *book)
 {
-	cout << "书标题  : " << book->title << endl;
-	cout << "书作者 : " << book->author << endl;
-	cout << "书类目 : " << book->subject << endl;
-	cout << "书 ID : " << book->book_id << endl;
+    cout << "书标题  : " << book->title << endl;
+    cout << "书作者 : " << book->author << endl;
+    cout << "书类目 : " << book->subject << endl;
+    cout << "书 ID : " << book->book_id << endl;
 }

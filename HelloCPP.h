@@ -44,10 +44,10 @@ int * getRandom();
 // typedef 关键字, 直接使用 Books 来定义 Books 类型的变量，而不需要使用 struct 关键字
 typedef struct
 {
-	char  title[50];
-	char  author[50];
-	char  subject[100];
-	int   book_id;
+    char  title[50];
+    char  author[50];
+    char  subject[100];
+    int   book_id;
 }Books;
 
 void printBook1(Books book);
@@ -255,7 +255,8 @@ void Stack<T>::push(T const& elem)
 template <class T>
 void Stack<T>::pop()
 {
-    if (elems.empty()) {
+    if (elems.empty()) 
+    {
         throw out_of_range("Stack<>::pop(): empty stack");
     }
     // 删除最后一个元素
