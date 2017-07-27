@@ -64,7 +64,7 @@ class Box {
 		double breadth;
 		double height;
 
-	protected:
+    protected:
 		string name;
 
     public:
@@ -188,8 +188,8 @@ const Box Box::operator+(const Box& b)
 
 class SmallBox :public Box // SmallBox 是派生类
 {
-public:
-	string getSmallName();
+    public:
+	    string getSmallName();
 };
 // 子类的成员函数
 string SmallBox::getSmallName()
