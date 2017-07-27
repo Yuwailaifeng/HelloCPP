@@ -1,20 +1,39 @@
+//#if _MSC_VER >= 1600    // VC2017
+//#pragma execution_character_set("utf-8")
+//#endif
+
 /*域外来风*/
 //OOP具有三大特性：封装性、继承性和多态性
 #include<iostream>
 #include<cmath>
-#include <ctime>
-#include <cstdlib>
-#include <iomanip>
-#include <vector>
-#include <string>
+#include<ctime>
+#include<cstdlib>
+#include<iomanip>
+#include<vector>
+#include<string>
+#include<fstream>
+#include<cstdlib>
+#include<stdexcept>
 
 
 
-
+//命名空间的定义使用关键字 namespace，后跟命名空间的名称
 using namespace std;
 
-
+//#define 预处理指令用于创建符号常量。该符号常量通常称为宏
 #define NEWLINE '\n'
+
+//# 运算符会把 replacement-text 令牌转换为用引号引起来的字符串("x")
+#define MKSTR( x ) #x
+
+//## 运算符用于连接两个令牌(xy)
+#define CONCAT( x, y )  x ## y
+
+
+
+//使用 #define 来定义一个带有参数的宏
+#define MIN(a,b) (a<b?a:b)
+
 const double  PI = 3.14159265358979323846;
 static int Count = 10; /* 全局变量 */
 
@@ -191,7 +210,64 @@ string SmallBox::getSmallName()
 //1.在内联函数内不允许使用循环语句和开关语句；
 //2.内联函数的定义必须出现在内联函数第一次调用之前；
 //3.类结构中所在的类说明内部定义的函数是内联函数。
-inline int Max(int x, int y)
+//inline int Max(int x, int y)
+//{
+//	return (x > y) ? x : y;
+//}
+
+
+
+//模板是泛型编程的基础，泛型编程即以一种独立于任何特定类型的方式编写代码
+template <class T>
+inline T const& Max(T const& a, T const& b)
 {
-	return (x > y) ? x : y;
+    return a < b ? b : a;
+}
+
+
+
+
+template <class T>
+class Stack 
+{
+    private:
+        vector<T> elems;//元素
+
+    public:
+        void push(T const&);//入栈
+        void pop();//出栈
+        T top() const;//返回栈顶元素
+
+        //如果为空则返回为真
+        bool empty() const
+        {
+            return elems.empty();
+        }
+};
+
+template <class T>
+void Stack<T>::push(T const& elem)
+{
+    // 追加传入元素的副本
+    elems.push_back(elem);
+}
+
+template <class T>
+void Stack<T>::pop()
+{
+    if (elems.empty()) {
+        throw out_of_range("Stack<>::pop(): empty stack");
+    }
+    // 删除最后一个元素
+    elems.pop_back();
+}
+
+template <class T>
+T Stack<T>::top() const
+{
+    if (elems.empty()) {
+        throw out_of_range("Stack<>::top(): empty stack");
+    }
+    // 返回最后一个元素的副本 
+    return elems.back();
 }
