@@ -295,7 +295,7 @@ int main(int argc, char* argv[])
     Box *box6 = new Box(12.1, 13.1, 14.1, "box6");
     box6->printBox();
     delete box6;//调用析构函数
-
+    
     Box* myBoxArray = new Box[7];
     cout << myBoxArray << endl;
     cout << (myBoxArray + 1) << endl;
